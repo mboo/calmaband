@@ -1,0 +1,116 @@
+h1 {
+  color: red;
+}
+
+@for $i from 1 through 23 {
+  $height: 190 + $i;
+  $user: "the_modern_life_mrs";
+  $url: "https://source.unsplash.com/user/" + $user + "/200x" + $height;
+  div:nth-child(24n - #{$i}) {
+    background-image: url("#{$url}");
+  }
+}
+
+@import url("https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap");
+
+:root {
+  --grid-size: calc(4.5rem + 2vw);
+  --grid-size-y: calc(var(--grid-size) * 0.8660254);
+  --grid-column-gap-mult: 0.023;
+  --num-cols: 3;
+}
+
+body {
+  min-height: 100vh;
+  width: calc(100% - var(--grid-size) * 2);
+  margin: calc(var(--grid-size) * 0.46) auto;
+  display: grid;
+  grid-auto-rows: var(--grid-size-y);
+  grid-template-columns: repeat(var(--num-cols), var(--grid-size));
+  grid-row-gap: var(--grid-size-y);
+  grid-column-gap: calc(var(--grid-size) * var(--grid-column-gap-mult));
+  justify-content: center;
+  font-size: calc(var(--grid-size) * 0.15);
+  background: #0e1020;
+}
+
+div {
+  position: relative;
+  background-color: #ddd;
+  background-size: 100% 100%;
+  background-position: center;
+  transform: scale(1.93);
+  &:nth-child(odd) {
+    clip-path: polygon(0 0, 100% 0, 50% 98%, 0 0);
+  }
+  &:nth-child(even) {
+    clip-path: polygon(50% 2%, 100% 100%, 0 100%, 50% 2%);
+  }
+
+  &:nth-child(6n) {
+    background-image: none;
+  }
+
+  &:nth-child(6n):before {
+    position: absolute;
+    top: calc(50% + 1em);
+    left: 50%;
+    transform: translate(-50%, -50%) translate(0, -0.3em);
+    content: "awesome";
+    font-family: "Kaushan Script", cursive;
+    color: #e26;
+  }
+
+  &:nth-child(18n):before {
+    transform: translate(-50%, -50%) rotate(-60deg) translate(0, -0.3em);
+    content: "radical";
+  }
+
+  &:nth-child(18n + 6):before {
+    transform: translate(-50%, -50%) rotate(60deg) translate(0, -0.3em);
+    content: "tubular";
+  }
+
+  &:nth-child(24n):before {
+    color: #4cd;
+  }
+
+  &:nth-child(15n-3) {
+    background-image: none;
+    background-color: #e26;
+  }
+
+  &:nth-child(5n-3):before {
+    color: white;
+  }
+}
+
+@media (min-width: 570px) {
+  :root {
+    --num-cols: 5;
+  }
+}
+
+@media (min-width: 810px) {
+  :root {
+    --num-cols: 7;
+  }
+}
+
+@media (min-width: 1120px) {
+  :root {
+    --num-cols: 9;
+  }
+}
+
+@media (min-width: 1340px) {
+  :root {
+    --num-cols: 11;
+  }
+}
+
+@media (min-width: 1600px) {
+  :root {
+    --num-cols: 13;
+  }
+}
